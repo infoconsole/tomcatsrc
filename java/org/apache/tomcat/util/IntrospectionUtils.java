@@ -594,7 +594,7 @@ public final class IntrospectionUtils {
         try {
             // Add tools.jar in any case
             File f = new File(System.getProperty("java.home")
-                    + "/../lib/tools.jar");
+                    + "/lunch/lib/tools.jar");
 
             if (!f.exists()) {
                 // On some systems java.home gets set to the root of jdk.
