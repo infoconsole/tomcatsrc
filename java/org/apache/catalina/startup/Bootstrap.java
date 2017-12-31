@@ -216,8 +216,9 @@ public final class Bootstrap {
         Object startupInstance = startupClass.newInstance();
 
         // Set the shared extensions class loader
-        if (log.isDebugEnabled())
+        if (log.isDebugEnabled()) {
             log.debug("Setting startup class properties");
+        }
 
         String methodName = "setParentClassLoader";
         Class<?> paramTypes[] = new Class[1];

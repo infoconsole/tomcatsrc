@@ -105,6 +105,7 @@ public abstract class LifecycleBase implements Lifecycle {
         }
 
         try {
+            //发布第一个状态的触发
             setStateInternal(LifecycleState.INITIALIZING, null, false);
             //  模板方法
             initInternal();

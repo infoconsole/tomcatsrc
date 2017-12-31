@@ -41,7 +41,7 @@ public final class LifecycleSupport {
      * Lifecycle component.
      *
      * @param lifecycle The Lifecycle component that will be the source
-     *  of events that we fire
+     *                  of events that we fire
      */
     public LifecycleSupport(Lifecycle lifecycle) {
 
@@ -64,7 +64,7 @@ public final class LifecycleSupport {
      * The set of registered LifecycleListeners for event notifications.
      */
     private LifecycleListener listeners[] = new LifecycleListener[0];
-    
+
     private final Object listenersLock = new Object(); // Lock object for changes to listeners
 
 
@@ -77,27 +77,25 @@ public final class LifecycleSupport {
      * @param listener The listener to add
      */
     public void addLifecycleListener(LifecycleListener listener) {
-
-      synchronized (listenersLock) {
-          LifecycleListener results[] =
-            new LifecycleListener[listeners.length + 1];
-          for (int i = 0; i < listeners.length; i++)
-              results[i] = listeners[i];
-          results[listeners.length] = listener;
-          listeners = results;
-      }
+        synchronized (listenersLock) {
+            LifecycleListener results[] =
+                    new LifecycleListener[listeners.length + 1];
+            for (int i = 0; i < listeners.length; i++) {
+                results[i] = listeners[i];
+            }
+            results[listeners.length] = listener;
+            listeners = results;
+        }
 
     }
 
 
     /**
-     * Get the lifecycle listeners associated with this lifecycle. If this 
+     * Get the lifecycle listeners associated with this lifecycle. If this
      * Lifecycle has no listeners registered, a zero-length array is returned.
      */
     public LifecycleListener[] findLifecycleListeners() {
-
         return listeners;
-
     }
 
 
@@ -115,8 +113,9 @@ public final class LifecycleSupport {
         LifecycleListener interested[] = listeners;
 
         // 循环所有的 LifecycleListener
-        for (int i = 0; i < interested.length; i++)
+        for (int i = 0; i < interested.length; i++) {
             interested[i].lifecycleEvent(event);
+        }
 
     }
 
@@ -136,14 +135,16 @@ public final class LifecycleSupport {
                     break;
                 }
             }
-            if (n < 0)
+            if (n < 0) {
                 return;
+            }
             LifecycleListener results[] =
-              new LifecycleListener[listeners.length - 1];
+                    new LifecycleListener[listeners.length - 1];
             int j = 0;
             for (int i = 0; i < listeners.length; i++) {
-                if (i != n)
+                if (i != n) {
                     results[j++] = listeners[i];
+                }
             }
             listeners = results;
         }
